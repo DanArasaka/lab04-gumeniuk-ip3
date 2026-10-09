@@ -1,0 +1,6 @@
+[0m
+[4mC:\Users\Acer\Desktop\Lab04_Gumeniuk_ІПЗ\legacy\old-report.js[24m
+  [2m0:0[22m  [33mwarning[39m  File ignored because of a matching ignore pattern. Use "--no-ignore" to disable file ignore settings or use "--no-warn-ignored" to suppress this warning
+
+[33m[1m✖ 1 problem (0 errors, 1 warning)[22m[39m
+[0m
