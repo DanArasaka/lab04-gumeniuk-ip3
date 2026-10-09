@@ -24,45 +24,41 @@ const appointments = [
 	{ id: 'A08', petName: 'Пушок', petType: 'кіт', serviceId: 6, isPaid: true }
 ];
 
-const findService = id => {
-	return servicesList.find(s => s.id === id);
-};
+const findService = id => servicesList.find(s => s.id === id);
 
 const getServiceInfo = service => {
 	if (service.category == 'surgery') {
-		return 'Складна процедура: ' + service.title + ' - ' + service.price + ' грн';
+		return `Складна процедура: ${  service.title  } - ${  service.price  } грн`;
 	}
-	return 'Послуга: ' + service.title + ' (' + service.price + ' грн)';
+	return `Послуга: ${  service.title  } (${  service.price  } грн)`;
 };
 
 function checkAppointment(item) {
 	item.isPaid;
 	if (item.isPaid) {
-		console.log('Оплачено для ' + item.petName);
+		console.log(`Оплачено для ${  item.petName}`);
 	}
 }
 
 function addNewAppointment(id, petName, petType, serviceId) {
 	const newObj = { id, petName, petType, serviceId, isPaid: false };
-	return 'Додано: ' + newObj.id;
+	return `Додано: ${  newObj.id}`;
 }
 
-const makeLog = (id, petName, petType, serviceTitle, price, status) => {
-	return (
-		'Запис №' +
-		id +
-		': тварина ' +
-		petName +
-		' (' +
-		petType +
-		'), послуга: ' +
-		serviceTitle +
-		', ціна ' +
-		price +
-		' грн, статус: ' +
-		status
+const makeLog = (id, petName, petType, serviceTitle, price, status) => (
+		`Запис №${ 
+		id 
+		}: тварина ${ 
+		petName 
+		} (${ 
+		petType 
+		}), послуга: ${ 
+		serviceTitle 
+		}, ціна ${ 
+		price 
+		} грн, статус: ${ 
+		status}`
 	);
-};
 
 function getPetCode(petType) {
 	switch (petType) {
@@ -157,30 +153,30 @@ function getPaidTotal(list) {
 }
 
 function printCountInfo(c) {
-	if (c > 0) console.log('Усього записів оброблено: ' + c);
+	if (c > 0) console.log(`Усього записів оброблено: ${  c}`);
 }
 
 function main() {
 	console.log('=== ЗВІТ КЛІНІКИ ===');
-	console.log('Адреса: ' + clinicAddress);
-	console.log('Усього послуг: ' + servicesList.length);
-	console.log('Усього записів: ' + appointments.length);
+	console.log(`Адреса: ${  clinicAddress}`);
+	console.log(`Усього послуг: ${  servicesList.length}`);
+	console.log(`Усього записів: ${  appointments.length}`);
 
 	const dogs = countDogs(appointments);
-	console.log('Кількість собак: ' + dogs);
+	console.log(`Кількість собак: ${  dogs}`);
 
 	const totalRevenue = calculateTotalSum(appointments);
-	console.log('Дохід: ' + totalRevenue + ' грн');
+	console.log(`Дохід: ${  totalRevenue  } грн`);
 
 	const paidSum = getPaidTotal(appointments);
-	console.log('Оплата чеками: ' + paidSum + ' грн');
+	console.log(`Оплата чеками: ${  paidSum  } грн`);
 
 	console.log('--- Список ---');
 	appointments.forEach(app => {
 		const s = findService(app.serviceId);
 		const sInfo = s ? getServiceInfo(s) : 'Немає';
 		const st = checkPaymentStatus(app);
-		console.log('Тварина: ' + app.petName + ' | ' + sInfo + ' | Статус: ' + st);
+		console.log(`Тварина: ${  app.petName  } | ${  sInfo  } | Статус: ${  st}`);
 	});
 
 	printCountInfo(appointments.length);
